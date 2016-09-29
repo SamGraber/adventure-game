@@ -1,5 +1,7 @@
 <div class="space {{spaceClass}}" 
 	 [class.selected]="space.selected"
 	 (click)="select.emit()">
-	<div class="content">{{space.x}} - {{space.y}}</div>
+	<div class="content">
+		<img class="figure" *ngIf="space.contains" [src]="space.contains.imageUrl" />
+	</div>
 </div>

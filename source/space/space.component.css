@@ -20,6 +20,11 @@
 	margin: auto;
 }
 
+.figure {
+	height: 100%;
+	width: 100%;
+}
+
 .grass {
 	background: #3ab757;	
 }

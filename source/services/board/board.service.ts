@@ -32,6 +32,9 @@ export class BoardService {
 				};
 			});
 		});
+		board[0][0].contains = {
+			imageUrl: '/assets/images/link.jpg',
+		};
 		this.stateStream = new BehaviorSubject(board);
 	}
 
