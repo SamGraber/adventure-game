@@ -3,28 +3,41 @@
  * Adjust as necessary for your application needs.
  */
 (function (global) {
+	var map = {
+		// our app is within the source folder
+		app: 'source',
+		// other libraries
+		'lodash': 'npm:lodash',
+		'rxjs': 'npm:rxjs',
+	};
+
+	var angularPackageNames = [
+		'core',
+		'common',
+		'compiler',
+		'platform-browser',
+		'platform-browser-dynamic',
+		'http',
+	];
+
+	function setAngularPackage(packageName) {
+		map[`@angular/${packageName}`] = `npm:@angular/${packageName}/bundles/${packageName}.umd.js`;
+	}
+
+	function setAngularTestingPackage(packageName) {
+		map[`@angular/${packageName}/testing`] = `npm:@angular/${packageName}/bundles/${packageName}-testing.umd.js`;
+	}
+
+	angularPackageNames.forEach(setAngularPackage);
+	angularPackageNames.forEach(setAngularTestingPackage);
+
 	System.config({
 		paths: {
 			// paths serve as alias
 			'npm:': 'node_modules/'
 		},
 		// map tells the System loader where to look for things
-		map: {
-			// our app is within the app folder
-			app: 'source',
-			// angular bundles
-			'@angular/core': 'npm:@angular/core/bundles/core.umd.js',
-			'@angular/common': 'npm:@angular/common/bundles/common.umd.js',
-			'@angular/compiler': 'npm:@angular/compiler/bundles/compiler.umd.js',
-			'@angular/platform-browser': 'npm:@angular/platform-browser/bundles/platform-browser.umd.js',
-			'@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
-			'@angular/http': 'npm:@angular/http/bundles/http.umd.js',
-			'@angular/router': 'npm:@angular/router/bundles/router.umd.js',
-			'@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
-			// other libraries
-			'lodash': 'npm:lodash',
-			'rxjs': 'npm:rxjs',
-		},
+		map: map,
 		// packages tells the System loader how to load when no filename and/or no extension
 		packages: {
 			app: {
@@ -37,4 +50,13 @@
 			},
 		}
 	});
+
+	shim('chai', window.chai);
+	shim('sinon', window.sinon);
+
+	function shim(library, global) {
+		System.register(library, [], true, function() {
+			return global;
+		});
+	}
 })(this);

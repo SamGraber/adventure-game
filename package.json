@@ -2,12 +2,12 @@
   "name": "angular-quickstart",
   "version": "1.0.0",
   "scripts": {
-    "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
+    "start": "tsc && npm-run-all --parallel tsc:w lite",
     "lite": "lite-server",
-    "postinstall": "typings install",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "typings": "typings"
+    "test": "karma start config/karma.conf.js",
+    "test.debug": "karma start config/karma.debug.conf.js"
   },
   "license": "ISC",
   "dependencies": {
@@ -30,11 +30,24 @@
     "zone.js": "^0.6.25"
   },
   "devDependencies": {
+    "@types/chai": "^3.4.34",
     "@types/core-js": "^0.9.34",
     "@types/jasmine": "^2.2.34",
     "@types/node": "^6.0.41",
-    "concurrently": "^3.0.0",
+    "@types/sinon": "^1.16.31",
+    "buffer": "^5.0.0",
+    "chai": "~3.5.0",
+    "jasmine": "^2.5.2",
+    "jasmine-core": "^2.5.2",
+    "karma": "~0.13.21",
+    "karma-chai": "~0.1.0",
+    "karma-chrome-launcher": "~0.2.2",
+    "karma-jasmine": "^1.0.2",
+    "karma-sinon": "~1.0.4",
     "lite-server": "^2.2.2",
+    "moment": "^2.15.0",
+    "npm-run-all": "^3.1.0",
+    "sinon": "~1.17.3",
     "typescript": "^2.0.3"
   }
 }
