@@ -13,6 +13,10 @@ export class SelectedSpaceService {
 		return this.stateStream.asObservable();
 	}
 
+	get hasSelection(): boolean {
+		return !!this.stateStream.getValue();
+	}
+
 	constructor() {
 		this.stateStream = new BehaviorSubject(null);
 	}

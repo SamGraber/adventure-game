@@ -44,13 +44,18 @@ export class BoardService {
 	}
 
 	selectSpace(space: Space) {
+		if (this.selectedSpaceService.hasSelection) {
+			// act
+			// return;
+		}
+
+		const selectedSpace = this.selectedSpaceService.selectSpace(space);
 		const board = map(this.stateStream.getValue(), row => map(row, cell => {
-			if (space === cell) {
-				return set(space, { selected: true });
+			if (selectedSpace === cell) {
+				return set(selectedSpace, { selected: true });
 			}
 			return set(cell, { selected: false });
 		}));
 		this.stateStream.next(board);
-		this.selectedSpaceService.selectSpace(space);
 	}
 }
