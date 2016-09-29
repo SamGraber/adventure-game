@@ -7,26 +7,37 @@ import { spacesAreEqual } from '../../util/space.comparer';
 
 @Injectable()
 export class SelectedSpaceService {
-	private stateStream: BehaviorSubject<Space>;
+	private selectedSpaceStream: BehaviorSubject<Space>;
+	private hoveredSpaceStream: BehaviorSubject<Space>;
 
-	get state$(): Observable<Space> {
-		return this.stateStream.asObservable();
+	get selected(): Observable<Space> {
+		return this.selectedSpaceStream.asObservable();
+	}
+
+	get hovered(): Observable<Space> {
+		return this.hoveredSpaceStream.asObservable();
 	}
 
 	get hasSelection(): boolean {
-		return !!this.stateStream.getValue();
+		return !!this.selectedSpaceStream.getValue();
 	}
 
 	constructor() {
-		this.stateStream = new BehaviorSubject(null);
+		this.selectedSpaceStream = new BehaviorSubject(null);
+		this.hoveredSpaceStream = new BehaviorSubject(null);
 	}
 
 	selectSpace(space: Space): Space {
-		if (spacesAreEqual(space, this.stateStream.getValue())) {
-			this.stateStream.next(null);
+		if (spacesAreEqual(space, this.selectedSpaceStream.getValue())) {
+			this.selectedSpaceStream.next(null);
 			return null;
 		}
-		this.stateStream.next(space);
+		this.selectedSpaceStream.next(space);
+		return space;
+	}
+
+	hoverSpace(space: Space): Space {
+		this.hoveredSpaceStream.next(space);
 		return space;
 	}
 }

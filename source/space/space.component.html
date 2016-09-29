@@ -1,6 +1,8 @@
 <div class="space {{spaceClass}}" 
 	 [class.selected]="space.selected"
-	 (click)="select.emit()">
+	 (click)="select.emit(space)"
+	 (mouseover)="hover.emit(space)"
+	 (mouseout)="hover.emit(null)">
 	<div class="content">
 		<img class="figure" *ngIf="space.contains" [src]="space.contains.imageUrl" />
 	</div>

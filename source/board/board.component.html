@@ -1,7 +1,9 @@
 <div class="board">
 	<div class="row" *ngFor="let row of boardService.state$ | async">
 		<div class="cell" *ngFor="let cell of row">
-			<ag-space [space]="cell" (select)="select(cell)"></ag-space>
+			<ag-space [space]="cell" 
+					  (select)="select($event)"
+					  (hover)="hover($event)"></ag-space>
 		</div>
 	</div>
 </div>

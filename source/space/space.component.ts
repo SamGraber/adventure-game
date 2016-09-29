@@ -10,7 +10,8 @@ import { Space } from '../types/space';
 })
 export class SpaceComponent {
 	@Input() space: Space;
-	@Output() select: EventEmitter<void> = new EventEmitter<void>();
+	@Output() select: EventEmitter<Space> = new EventEmitter<Space>();
+	@Output() hover: EventEmitter<Space> = new EventEmitter<Space>();
 
 	get spaceClass(): string {
 		if (this.space.visible) {
