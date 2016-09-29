@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 
 import { Space } from './space';
 
@@ -10,4 +10,5 @@ import { Space } from './space';
 })
 export class SpaceComponent {
 	@Input() space: Space;
+	@Output() select: EventEmitter<void> = new EventEmitter<void>();
 }

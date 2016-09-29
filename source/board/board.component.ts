@@ -24,4 +24,12 @@ export class BoardComponent {
 			});
 		});
 	}
+
+	select(space: Space) {
+		console.log('Selected', space)
+		this.board = map(this.board, row => map(row, cell => {
+			cell.selected = cell === space;
+			return cell;
+		}));
+	}
 }

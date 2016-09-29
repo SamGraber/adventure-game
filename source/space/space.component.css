@@ -9,7 +9,11 @@
 }
 
 .space:hover {
-	background: #dd0000;
+	background: #dddddd;
+}
+
+.space.selected {
+	background: #ffffff; 
 }
 
 .content {
