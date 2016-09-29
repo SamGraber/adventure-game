@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { range, map } from 'lodash';
+import { range, map, random } from 'lodash';
 
 import { Space } from '../../types/space';
+import { Terrain, terrain } from '../../types/terrain.enum';
 import { set } from '../../util/object';
 import { SelectedSpaceService } from '../selectedSpace/selectedSpace.service';
 
@@ -27,6 +28,7 @@ export class BoardService {
 				return {
 					x: col,
 					y: row,
+					terrain: this.getRandomTerrain(),
 				};
 			});
 		});
@@ -57,5 +59,9 @@ export class BoardService {
 			return set(cell, { selected: false });
 		}));
 		this.stateStream.next(board);
+	}
+
+	private getRandomTerrain(): Terrain {
+		return terrain.all()[random(0, 2)];
 	}
 }
