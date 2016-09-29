@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import './rxjs-operators';
+
 import { AppComponent } from './app.component';
 import { BoardComponent } from './board/board.component';
 import { SpaceComponent } from './space/space.component';
