@@ -23,11 +23,20 @@
 .grass {
 	background: #3ab757;	
 }
+.grass.selected {
+	background: #32db59;	
+}
 
 .forest {
 	background: #31683e;
 }
+.forest.selected {
+	background: #4b8759;
+}
 
 .mountain {
 	background: #59605a;
+}
+.mountain.selected {
+	background: #bbbbbb;
 }
