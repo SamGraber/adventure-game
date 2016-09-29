@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter} from '@angular/core';
 
-import { Space } from './space';
+import { Space } from '../types/space';
 
 @Component({
 	moduleId: module.id,

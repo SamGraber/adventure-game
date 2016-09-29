@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { range, map } from 'lodash';
 
-import { Space } from '../space/space';
+import { Space } from '../types/space';
 
 @Component({
 	moduleId: module.id,
