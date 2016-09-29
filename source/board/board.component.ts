@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { range, map } from 'lodash';
 
+import { Space } from './space';
+
 @Component({
 	moduleId: module.id,
 	selector: 'ag-board',
@@ -8,13 +10,18 @@ import { range, map } from 'lodash';
 	styleUrls: ['board.component.css'],
 })
 export class BoardComponent {
-	board: string[][];
+	board: Space[][];
 
 	constructor() {
 		const rows = range(0, 10);
 		this.board = map(rows, row => {
 			const cols = range(0, 10);
-			return map(cols, col => `${row} - ${col}`);
+			return map(cols, col => {
+				return {
+					x: col,
+					y: row,
+				};
+			});
 		});
 	}
 }
