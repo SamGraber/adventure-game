@@ -19,3 +19,15 @@
 .content {
 	margin: auto;
 }
+
+.grass {
+	background: #3ab757;	
+}
+
+.forest {
+	background: #31683e;
+}
+
+.mountain {
+	background: #59605a;
+}
