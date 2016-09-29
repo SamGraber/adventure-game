@@ -14,7 +14,6 @@ export class BoardComponent {
 	constructor(public boardService: BoardService) {}
 
 	select(space: Space) {
-		console.log('Selected', space)
 		this.boardService.selectSpace(space);
 	}
 }
