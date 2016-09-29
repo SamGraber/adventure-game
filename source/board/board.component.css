@@ -1,0 +1,29 @@
+.board {
+	display: flex;
+	flex-direction: column;
+	height: 1000px;
+	width: 1000px;
+	justify-content: space-around;
+}
+
+.row {
+	display: flex;
+	flex-direction: row;
+	height: 100px;
+	width: 1000px;
+	justify-content: space-around;
+}
+
+.cell {
+	background: #eeeeee;
+	border: 1px solid #aaaaaa;
+	height: 100%;
+	width: 100%;
+	margin: auto;
+	text-align: center;
+	cursor: pointer;
+}
+
+.cell:hover {
+	background: #dddddd;
+}
