@@ -1,34 +1,20 @@
 .board {
 	display: flex;
 	flex-direction: column;
-	height: 1000px;
-	width: 1000px;
+	height: 1100px;
+	width: 1100px;
 	justify-content: space-around;
 }
 
 .row {
 	display: flex;
 	flex-direction: row;
-	height: 100px;
-	width: 1000px;
+	height: 110px;
+	width: 1100px;
 	justify-content: space-around;
 }
 
 .cell {
-	background: #eeeeee;
-	border: 1px solid #aaaaaa;
 	height: 100%;
 	width: 100%;
-	margin: auto;
-	display: flex;
-	text-align: center;
-	cursor: pointer;
-}
-
-.cell:hover {
-	background: #dddddd;
-}
-
-.cell .content {
-	margin: auto;
 }

@@ -1,7 +1,7 @@
 <div class="board">
 	<div class="row" *ngFor="let row of board">
 		<div class="cell" *ngFor="let cell of row">
-			<div class="content">{{cell.x}} - {{cell.y}}</div>
+			<ag-space [space]="cell"></ag-space>
 		</div>
 	</div>
 </div>
