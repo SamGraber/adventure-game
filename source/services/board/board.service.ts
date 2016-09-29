@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { range, map, assign } from 'lodash';
+import { range, map } from 'lodash';
 
 import { Space } from '../../types/space';
+import { set } from '../../util/object';
 
 @Injectable()
 export class BoardService {
@@ -44,9 +45,9 @@ export class BoardService {
 	selectSpace(space: Space) {
 		const board = map(this.stateStream.getValue(), row => map(row, cell => {
 			if (space === cell) {
-				return assign({}, space, { selected: true });
+				return set(space, { selected: true });
 			}
-			return assign({}, cell, { selected: false });
+			return set(cell, { selected: false });
 		}));
 		this.stateStream.next(board);
 	}
