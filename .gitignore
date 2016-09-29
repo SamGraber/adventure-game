@@ -1,0 +1,8 @@
+# Npm packages
+/node_modules/
+
+# Built files
+source/*.js
+source/*.js.map
+source/**/*.js
+source/**/*.js.map
