@@ -5,6 +5,7 @@ import { range, map } from 'lodash';
 
 import { Space } from '../../types/space';
 import { set } from '../../util/object';
+import { SelectedSpaceService } from '../selectedSpace/selectedSpace.service';
 
 @Injectable()
 export class BoardService {
@@ -14,7 +15,7 @@ export class BoardService {
 		return this.stateStream.asObservable();
 	}
 
-	constructor() {
+	constructor(private selectedSpaceService: SelectedSpaceService) {
 		this.createBoard();
 	}
 
@@ -50,5 +51,6 @@ export class BoardService {
 			return set(cell, { selected: false });
 		}));
 		this.stateStream.next(board);
+		this.selectedSpaceService.selectSpace(space);
 	}
 }
