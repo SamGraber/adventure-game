@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BoardComponent } from './board/board.component';
 import { SpaceComponent } from './space/space.component';
+import { BoardService } from './services/board/board.service';
 
 @NgModule({
 	imports: [BrowserModule],
@@ -11,6 +12,9 @@ import { SpaceComponent } from './space/space.component';
 		AppComponent,
 		BoardComponent,
 		SpaceComponent,
+	],
+	providers: [
+		BoardService,
 	],
 	bootstrap: [AppComponent],
 })

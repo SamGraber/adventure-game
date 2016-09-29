@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { range, map } from 'lodash';
+import { assign } from 'lodash';
 
 import { Space } from '../types/space';
+import { BoardService } from '../services/board/board.service';
 
 @Component({
 	moduleId: module.id,
@@ -10,26 +11,10 @@ import { Space } from '../types/space';
 	styleUrls: ['board.component.css'],
 })
 export class BoardComponent {
-	board: Space[][];
-
-	constructor() {
-		const rows = range(0, 10);
-		this.board = map(rows, row => {
-			const cols = range(0, 10);
-			return map(cols, col => {
-				return {
-					x: col,
-					y: row,
-				};
-			});
-		});
-	}
+	constructor(public boardService: BoardService) {}
 
 	select(space: Space) {
 		console.log('Selected', space)
-		this.board = map(this.board, row => map(row, cell => {
-			cell.selected = cell === space;
-			return cell;
-		}));
+		this.boardService.selectSpace(space);
 	}
 }

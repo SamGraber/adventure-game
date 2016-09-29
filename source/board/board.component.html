@@ -1,5 +1,5 @@
 <div class="board">
-	<div class="row" *ngFor="let row of board">
+	<div class="row" *ngFor="let row of boardService.state$ | async">
 		<div class="cell" *ngFor="let cell of row">
 			<ag-space [space]="cell" (select)="select(cell)"></ag-space>
 		</div>
